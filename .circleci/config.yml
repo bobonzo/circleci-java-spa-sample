@@ -49,6 +49,8 @@ jobs:
 
       - run: ls -lR
 
+      - run: pwd
+
       - store_artifacts:
-              path: circleci-java-spa-demo/build/libs
+              path: ./build/libs
               destination: /artifacts
