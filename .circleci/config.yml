@@ -13,7 +13,7 @@ jobs:
       - run: git clone https://github.com/bobonzo/circleci-spa-asmple.git
       - run: pwd
       - run: ls -lR
-      - run: cd ./circleci-spa-asample
+      - run: cd ./circleci-spa-asmple
       - run: npm install
       - run: npm run build
       - store_artifacts:
@@ -70,8 +70,10 @@ jobs:
               destination: /artifacts
 
 workflows:
-      version: 2
-      spa-and-java-build:
-        jobs:
-              - build-front
-              - build
+  version: 2
+  spa-and-java-build:
+    jobs:
+      - build-front
+      - build:
+          requires:
+            - build-front
