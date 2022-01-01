@@ -5,6 +5,20 @@ version: 2
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
+  build-front:
+    docker:
+      - image: cimg/node:12.22.8
+    working_directory: ~/project
+    steps:
+      - run: git clone https://github.com/bobonzo/circleci-spa-asmple.git
+      - run: pwd
+      - run: ls -lR
+      - run: cd ./circleci-spa-sample
+      - run: npm install
+      - run: npm run build
+      - store_artifacts:
+              path: ./dist
+              destination: /front-artifacts
   build:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
