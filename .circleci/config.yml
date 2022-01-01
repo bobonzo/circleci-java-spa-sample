@@ -47,5 +47,8 @@ jobs:
       
       - run: gradle build
 
+      - run: ls -lR
+
       - store_artifacts:
-              path: /artifacts
+              path: circleci-java-spa-demo/build/libs
+              destination: /artifacts
