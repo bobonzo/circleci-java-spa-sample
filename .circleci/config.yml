@@ -13,7 +13,7 @@ jobs:
       - run: git clone https://github.com/bobonzo/circleci-spa-asmple.git
       - run: pwd
       - run: ls -lR
-      - run: cd ./circleci-spa-sample
+      - run: cd ./circleci-spa-asample
       - run: npm install
       - run: npm run build
       - store_artifacts:
