@@ -72,7 +72,7 @@ jobs:
 
       - run: ls -lR
 
-      - run: mkdir ./src/main/resources/static && cp /tmp/circleci-spa-asmple/* ./src/main/resources/static
+      - run: mkdir ./src/main/resources/static && cp -R /tmp/circleci-spa-asmple/* ./src/main/resources/static
 
       - run: ls -lR
       
