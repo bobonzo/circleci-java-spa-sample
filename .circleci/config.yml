@@ -70,6 +70,8 @@ jobs:
       # run tests!
       - run: gradle test
 
+      - run: ls -lR
+
       - run: cp /tmp/circleci-spa-asmple/* ./src/main/resoureces/static
 
       - run: ls -lR
