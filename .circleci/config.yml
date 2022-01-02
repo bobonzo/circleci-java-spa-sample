@@ -1,6 +1,6 @@
 # Java Gradle CircleCI 2.0 configuration file
 # See: https://circleci.com/docs/2.0/language-java/
-version: 2
+version: 2.1
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -11,10 +11,7 @@ jobs:
     working_directory: ~/project
     steps:
       - run: git clone https://github.com/bobonzo/circleci-spa-asmple.git
-      - run: pwd
-      - run: ls -lR
-      # - run: cd ./circleci-spa-asmple
-      # - run: npm install vue-cli
+
       - run: cd ./circleci-spa-asmple && npm install
       - run: cd ./circleci-spa-asmple && npm run build
 
@@ -22,7 +19,6 @@ jobs:
               root: ./circleci-spa-asmple/dist
               paths:
                     - "*"
-
       - store_artifacts:
               path: ./circleci-spa-asmple/dist
               destination: /front-artifacts
@@ -51,7 +47,6 @@ jobs:
 
       - attach_workspace:
               at: /tmp/circleci-spa-asmple
-      # - run: ls -lR /
 
       # Download and cache dependencies
       - restore_cache:
@@ -70,11 +65,7 @@ jobs:
       # run tests!
       - run: gradle test
 
-      - run: ls -lR
-
       - run: mkdir ./src/main/resources/static && cp -R /tmp/circleci-spa-asmple/* ./src/main/resources/static
-
-      - run: ls -lR
       
       - run: gradle build
 
