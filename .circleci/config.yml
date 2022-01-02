@@ -19,9 +19,9 @@ jobs:
       - run: cd ./circleci-spa-asmple && npm run build
 
       - persist_to_workspace:
-              root: ./circleci-spa-asmple
+              root: ./circleci-spa-asmple/dest
               paths:
-                    - "dest"
+                    - "*"
 
       - store_artifacts:
               path: ./circleci-spa-asmple/dist
