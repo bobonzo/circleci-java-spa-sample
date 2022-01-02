@@ -67,7 +67,9 @@ jobs:
 
       - run: mkdir ./src/main/resources/static && cp -R /tmp/circleci-spa-asmple/* ./src/main/resources/static
       
-      - run: gradle build
+      - run: gradle bootBuildImage
+
+      - run: docker images
 
       - store_artifacts:
               path: ./build/libs
