@@ -13,9 +13,9 @@ jobs:
       - run: git clone https://github.com/bobonzo/circleci-spa-asmple.git
       - run: pwd
       - run: ls -lR
-      - run: cd ./circleci-spa-asmple
-      - run: npm install vue-cli
-      - run: npm install
+      # - run: cd ./circleci-spa-asmple
+      # - run: npm install vue-cli
+      - run: cd ./circleci-spa-asmple && npm install
       - run: cd ./circleci-spa-asmple && npm run build
       - store_artifacts:
               path: ./dist
