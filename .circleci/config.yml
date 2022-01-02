@@ -51,7 +51,7 @@ jobs:
 
       - attach_workspace:
               at: /tmp/circleci-spa-asmple
-      - run: ls -lR /
+      # - run: ls -lR /
 
       # Download and cache dependencies
       - restore_cache:
@@ -69,6 +69,10 @@ jobs:
 
       # run tests!
       - run: gradle test
+
+      - run: cp /tmp/circleci-spa-asmple/* ./src/main/resoureces/static
+
+      - run: ls -lR
       
       - run: gradle build
 
