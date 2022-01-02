@@ -12,11 +12,11 @@ jobs:
     steps:
       - run: git clone https://github.com/bobonzo/circleci-spa-asmple.git
       - run: pwd
+      - run: ls -lR
       # - run: cd ./circleci-spa-asmple
       # - run: npm install vue-cli
       - run: cd ./circleci-spa-asmple && npm install
       - run: cd ./circleci-spa-asmple && npm run build
-      - run: ls -lR
 
       - persist_to_workspace:
               root: ./circleci-spa-asmple
@@ -52,7 +52,7 @@ jobs:
       - attach_workspace:
               at: /tmp/circleci-spa-asmple
       - run: ls -lR
-      
+
       # Download and cache dependencies
       - restore_cache:
           keys:
