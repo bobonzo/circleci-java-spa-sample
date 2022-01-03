@@ -67,24 +67,18 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # run tests!
       - run: gradle test
 
-      - run: mkdir ./src/main/resources/static && cp -R /tmp/circleci-spa-asmple/* ./src/main/resources/static
+      - run:
+          command: |
+            mkdir ./src/main/resources/static
+            cp -R /tmp/circleci-spa-asmple/* ./src/main/resources/static
       
       - run: gradle bootBuildImage
 
-      - run: docker images
-
       - run: docker tag demo:0.0.1-SNAPSHOT 246188012812.dkr.ecr.ap-northeast-1.amazonaws.com/circleci-many-repo-sample:latest
 
-      - run: docker images
-
       - aws-ecr/ecr-login
-
-      # - run: aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 246188012812.dkr.ecr.ap-northeast-1.amazonaws.com
-
-      # - run: docker push 246188012812.dkr.ecr.ap-northeast-1.amazonaws.com/circleci-many-repo-sample:latest
       
       - aws-ecr/push-image:
           repo: circleci-many-repo-sample
